@@ -24,11 +24,14 @@ services:
 
   postgres:
     build: ./compose/postgres
+    ports:
+          - "5432:5432"
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data
       - postgres_backup_dev:/backups
     environment:
       - POSTGRES_USER=djangopackages
+      - POSTGRES_PASSWORD=postgres
 
   redis:
     build: ./compose/redis
